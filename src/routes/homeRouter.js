@@ -1,28 +1,33 @@
+var express = require( "express" );
+var router = express.Router();
+const homeController = require( "../controllers/Home" );
+    cartController = require('../controllers/Cart');
 
 
-var express = require( "express" ),
-	router = express.Router();
+/* ==[ Homepage ]==========================
+ */
+// router.get( "/", getHomePage );
+router.get( "/guide", guide );
 
 
-router.get( "/", ( l, y, h ) => {
-	y.render( "produto" );
-} );
+/* ==[ Product ]===========================
+ */
+// router.get( "/product/details/:productId", getProductDetailsPage );
 
 
-
-
-
-
-
-
-
-
-
-
+/* ==[ Cart ]==============================
+ */
+// router.post( "/cart", postCartPage );
+// router.get( "/cart", getCartPage );
+// router.post( "/cart/delete-item", deleteCartItem );
 
 
 
 
-/* [ exports ]
-=========================================== */
+
+
+
+
+/* ==[ Exports ]============================
+ */
 module.exports = router;
