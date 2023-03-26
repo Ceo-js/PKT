@@ -14,9 +14,9 @@ const loginRouter = require( "./src/routes/loginRouter" );
 const checkoutRouter = require( "./src/routes/checkoutRouter" );
 const authRouter = require( "./src/routes/authRouter" );
 
-const lyhTemps = require( "./src/routes/noely-temps" );
+// const lyhTemps = require( "./src/routes/noely-temps" );
 const guide = require( "./src/routes/noely-temps" );
-const productRouter = require( "./src/routes/productRouter" );
+// const productRouter = require( "./src/routes/productRouter" );
 
 /* Variaveis */
 
@@ -51,8 +51,8 @@ app.use( checkoutRouter );
 app.use( authRouter );
 
 
-app.use( lyhTemps );
-app.use( productRouter );
+// app.use( lyhTemps );
+// app.use( productRouter );
 
 // catch 404 and forward to error handler
 
@@ -74,15 +74,22 @@ app.use( function( err, req, res, next ) {
 app.listen( port, ( err )=>{
 	console.log( `Servidor esta rodando da port${port}` );
     
-	console.log( `\x1b[34m[===============================]\n\x1b[0m
+    console.clear();
+	console.log( `\x1b[34m[============================]\n\x1b[0m
+        Pikituchos
+\x1b[34m[============================]\x1b[0m
+
 --------- server is on ---------
+CTRL + Click on links below
+--------------------------------
+
 server:
         \x1b[33mhttp://localhost:${port}\x1b[0m
-
+admin panel:
+        \x1b[33mhttp://localhost:${port}/admin-panel\x1b[0m
 guide:
         \x1b[33mhttp://localhost:${port}/guide\x1b[0m
---------------------------------
-\x1b[34m[===============================]\x1b[0m` );
+` );
 } );
 
 
