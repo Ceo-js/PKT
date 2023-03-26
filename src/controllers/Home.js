@@ -2,20 +2,40 @@
 /* [ imports ]
 =============================================== */
 const express = require( "express" );
+// ,
+//     { fetchAllProducts, getProductById } = require( "../models/Products" );
 
 /* [ properties ]
 =============================================== */
-const homeController = {
-	index: function( req, res, next ) {
-		res.render( "index" );
+exports.homeController = [
+	getHomePage = ( req, res, next ) => {
+		// res.render( "index" );
+        
+        // fetchAllProducts( ( products ) => {
+            const viewsData = {
+                admin: false,
+                products,
+                pageTitle: 'Pikituchos - Home Page'
+            };
+            res.render( "index", viewsData );
+        // });
 	},
-	guide: function( l, y, h ) {
+    // getProductDetailsPage = ( req, res ) => {
+    //     const productId = req.params.productId;
+    //     getProductById( productId, ( product ) => {
+    //         const viewsData = {
+    //             product,
+    //             pageTitle: product.title 
+    //         };
+    //         res.render( "productDetails", viewsData );
+    //     } );
+    // },
+	guide = ( l, y, h ) => {
 		y.render( "guide" );
 	},
-	produto: function( l, y, h ) {
-		y.render( "produto" );
-	},
-};
+];
+
+
 
 
 
@@ -23,4 +43,4 @@ const homeController = {
 
 /* [ exports ]
 =============================================== */
-module.exports = homeController;
+// module.exports = homeController;
