@@ -1,13 +1,14 @@
 var express = require( "express" );
 var router = express.Router();
-const homeController = require( "../controllers/Home" );
-    cartController = require('../controllers/Cart');
+const adminController = require( "../controllers/Admin" ),
+    productsData = require( "../models/ProductsData" );
+    // cartController = require('../controllers/Cart');
 
 
 /* ==[ Homepage ]==========================
  */
-// router.get( "/", getHomePage );
-router.get( "/guide", guide );
+router.get( "/admin-panel", getAdminPage );
+// router.get( "/guide", guide );
 
 
 /* ==[ Product ]===========================

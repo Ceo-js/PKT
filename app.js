@@ -8,14 +8,16 @@ const session = require( "express-session" );
 
 /* Importações das rotas */
 
-const indexRouter = require( "./src/routes/indexRouter" );
+// const indexRouter = require( "./src/routes/indexRouter" );
 const usersRouter = require( "./src/routes/usersRouter" );
 const loginRouter = require( "./src/routes/loginRouter" );
 const checkoutRouter = require( "./src/routes/checkoutRouter" );
 const authRouter = require( "./src/routes/authRouter" );
 
 // const lyhTemps = require( "./src/routes/noely-temps" );
-const guide = require( "./src/routes/noely-temps" );
+// const guide = require( "./src/routes/noely-temps" );
+const homeRouter = require( "./src/routes/home" ),
+    adminRouter = require( "./src/routes/admin" );
 // const productRouter = require( "./src/routes/productRouter" );
 
 /* Variaveis */
@@ -44,14 +46,15 @@ app.use( express.static( path.join( __dirname, "src/public" ) ) ); // define ond
 
 /* Rotas */
 
-app.use( indexRouter );
+// app.use( indexRouter );
 app.use( usersRouter );
 app.use( loginRouter );
 app.use( checkoutRouter );
 app.use( authRouter );
 
 
-// app.use( lyhTemps );
+app.use( homeRouter );
+app.use( adminRouter );
 // app.use( productRouter );
 
 // catch 404 and forward to error handler

@@ -9,15 +9,20 @@ const express = require( "express" );
 =============================================== */
 exports.homeController = [
 	getHomePage = ( req, res, next ) => {
-		// res.render( "index" );
+        const viewsData = {
+            admin: false,
+            // products,
+            // pageTitle: 'Pikituchos - Home Page'
+        };
+        res.render( "index", viewsData );
         
         // fetchAllProducts( ( products ) => {
-            const viewsData = {
-                admin: false,
-                products,
-                pageTitle: 'Pikituchos - Home Page'
-            };
-            res.render( "index", viewsData );
+        //     const viewsData = {
+        //         admin: false,
+        //         products,
+        //         pageTitle: 'Pikituchos - Home Page'
+        //     };
+        //     res.render( "index", viewsData );
         // });
 	},
     // getProductDetailsPage = ( req, res ) => {
@@ -31,7 +36,10 @@ exports.homeController = [
     //     } );
     // },
 	guide = ( l, y, h ) => {
-		y.render( "guide" );
+        const viewsData = {
+            pageTitle: "Guia Pikituchos - Homepage",
+        };
+		y.render( "guide", viewsData );
 	},
 ];
 
