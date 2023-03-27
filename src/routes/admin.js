@@ -1,27 +1,27 @@
 var express = require( "express" );
 var router = express.Router();
+// const { getAdminPage, getAddProductPage } = require("../controllers/Admin"),
 const adminController = require( "../controllers/Admin" ),
     productsData = require( "../models/ProductsData" );
     // cartController = require('../controllers/Cart');
 
 
-/* ==[ Homepage ]==========================
+/* ==[ Admin ]==========================
  */
-router.get( "/admin-panel", getAdminPage );
-// router.get( "/guide", guide );
+router.get( "/admin", getAdminPage );
 
 
-/* ==[ Product ]===========================
+/* ==[ add-product ]===========================
+*/
+router.get( "/add-products", getAddProductPage );
+router.post( "/add-products", postAddProductPage );
+
+
+/* ==[ edit-product ]==============================
  */
-// router.get( "/product/details/:productId", getProductDetailsPage );
-
-
-/* ==[ Cart ]==============================
- */
-// router.post( "/cart", postCartPage );
-// router.get( "/cart", getCartPage );
-// router.post( "/cart/delete-item", deleteCartItem );
-
+router.get( "/edit-product/:productId", getEditProductPage );
+router.post( "/edit-product", postEditProductPage );
+router.post( "/delete-product", postDeleteProductPage );
 
 
 

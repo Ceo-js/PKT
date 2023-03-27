@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
-    "app": "nodemon ./app.js",
+    "app": "nodemon ./src/bin/www",
     "lyh": "nodemon ./src/bin/lyh"
   },
   "dependencies": {

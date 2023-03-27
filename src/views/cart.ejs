@@ -1,0 +1,136 @@
+
+
+<%- include( "includes/home/head.ejs" ) %>
+<body>
+        
+    <%- include( "includes/appbar.ejs" ) %>
+    <!-- <page-header></page-header> -->
+
+    <main>
+        <!-- [ highlights section ]
+        ========================================================= -->
+        <article class="highlights">
+            <header>
+                <title-pk title-pk="<%= pageTitle %>" color="var(--cp05)"></title-pk>
+            </header>
+            
+            <div>
+                <p>Product Name</p>
+                <p>Quantity</p>
+                <p>Price per Product</p>
+                <p>Total Price</p>
+                <p>Actions</p>
+            </div>
+            <% for( let product of cartProducts ) { %>
+                <card>
+                    <h2><%= product.title %></h2>
+                    <p><%= product.quantity %></p>
+                    <p><%= product.price %></p>
+                    <p><%= product.cartPrice %></p>
+                    <p>
+                        <form action="/cart/delete-item" method="post">
+                            <input type="hidden" name="productId" value="<%= product.id %>">
+                            <!-- <button>Delete</button> -->
+                            <!-- <center-btn> -->
+                                <button-pk name="Delete" color="" width="50%"></button-pk>
+                            <!-- </center-btn> -->
+                        </form>
+                    </p>
+                </card>
+            <% } %>
+        </article>
+    </main>
+        
+    <%- include( "includes/footer.ejs" ) %>
+    <!-- <page-footer></page-footer> -->
+    
+    
+    <script>
+        /* [ swiperjs ]
+            ============================================================== */
+        /*  https://swiperjs.com/get-started
+            https://www.jsdelivr.com/package/npm/swiper
+            https://swiperjs.com/demos
+        */
+        var swiper = new Swiper( "*[slider-heighlights]", {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: "true",
+            fade: "true",
+            grabCursor: "true",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        
+            breakpoints:{
+                0: { slidesPerView: 1, },
+                520: { slidesPerView: 2, },
+                830: { slidesPerView: 3, },
+                950: { slidesPerView: 3, },
+                1120: { slidesPerView: 4, },
+            },
+        } );
+
+        var swiper = new Swiper( "*[slider-0-1anos]", {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: "true",
+            fade: "true",
+            grabCursor: "true",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        
+            breakpoints:{
+                0: { slidesPerView: 1, },
+                520: { slidesPerView: 2, },
+                830: { slidesPerView: 3, },
+                950: { slidesPerView: 3, },
+                1120: { slidesPerView: 4, },
+            },
+        } );
+
+        var swiper = new Swiper( "*[slider-2-3anos]", {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: "true",
+            fade: "true",
+            grabCursor: "true",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        
+            breakpoints:{
+                0: { slidesPerView: 1, },
+                520: { slidesPerView: 2, },
+                830: { slidesPerView: 3, },
+                950: { slidesPerView: 3, },
+                1120: { slidesPerView: 4, },
+            },
+        } );
+    </script>
+</body>
+</html>
+
+

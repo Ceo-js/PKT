@@ -14,33 +14,37 @@ const loginRouter = require( "./src/routes/loginRouter" );
 const checkoutRouter = require( "./src/routes/checkoutRouter" );
 const authRouter = require( "./src/routes/authRouter" );
 
+// const lyhTemps = require( "./src/routes/noely-temps" );
+// const guide = require( "./src/routes/noely-temps" );
 const homeRouter = require( "./src/routes/home" ),
     adminRouter = require( "./src/routes/admin" );
+// const productRouter = require( "./src/routes/productRouter" );
 
 /* Variaveis */
 
 const app = express();
+const port = 4444;
 
 // Define a coniguração do ejs
 app.set( "views", path.join( __dirname, "src/views" ) );
 app.set( "view engine", "ejs" );
 
+app.use( logger( "dev" ) );
+
 app.use( session( {
-    secret:"secretpassword",
+	secret:"secretpassword",
 	resave: true,
 	saveUninitialized: true
 } ) );
 
-app.use( logger( "dev" ) );
 app.use( express.json() ); // define para que express ententa arquivos JSON
+
 app.use( express.urlencoded( { extended: false } ) );
+
 app.use( cookieParser() );
-// app.use( express.static( path.join( __dirname, "src/public" ) ) ); // define onde vao estar os arquivos estaticos
-app.use(express.static("./src/public"));
+app.use( express.static( path.join( __dirname, "src/public" ) ) ); // define onde vao estar os arquivos estaticos
 
 /* Rotas */
-app.use( homeRouter );
-app.use( adminRouter );
 
 // app.use( indexRouter );
 app.use( usersRouter );
@@ -49,6 +53,8 @@ app.use( checkoutRouter );
 app.use( authRouter );
 
 
+app.use( homeRouter );
+app.use( "/admin", adminRouter );
 // app.use( productRouter );
 
 // catch 404 and forward to error handler
@@ -68,24 +74,26 @@ app.use( function( err, req, res, next ) {
 	res.render( "error" );
 } );
 
-// app.listen( port, ( err )=>{
-//     console.clear();
-// 	console.log( `\x1b[34m[============================]\n\x1b[0m
-//         Pikituchos
-// \x1b[34m[============================]\x1b[0m
+app.listen( port, ( err )=>{
+	console.log( `Servidor esta rodando da port${port}` );
+    
+    console.clear();
+	console.log( `\x1b[34m[============================]\n\x1b[0m
+        Pikituchos
+\x1b[34m[============================]\x1b[0m
 
-// --------- server is on ---------
-// CTRL + Click on links below
-// --------------------------------
+--------- server is on ---------
+CTRL + Click on links below
+--------------------------------
 
-// server:
-//         \x1b[33mhttp://localhost:${port}\x1b[0m
-// admin panel:
-//         \x1b[33mhttp://localhost:${port}/admin-panel\x1b[0m
-// guide:
-//         \x1b[33mhttp://localhost:${port}/guide\x1b[0m
-// ` );
-// } );
+server:
+        \x1b[33mhttp://localhost:${port}\x1b[0m
+admin panel:
+        \x1b[33mhttp://localhost:${port}/admin-panel\x1b[0m
+guide:
+        \x1b[33mhttp://localhost:${port}/guide\x1b[0m
+` );
+} );
 
 
 module.exports = app;
