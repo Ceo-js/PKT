@@ -317,6 +317,10 @@ page-footer > hr {
     width: 28px;
     cursor: pointer;
     filter: drop-shadow(-3px 3px 5px #0005);
+} .socials footer img:hover {
+    transition: .2s ease-out;
+    border-radius: 2rem;
+    box-shadow: #e5e5e555 0 0 0 5px;
 }
 
 .footer-top .support {
@@ -338,6 +342,9 @@ page-footer > hr {
 .footer-top .contact-info {
     display: block;
     grid-column: 10 / span 3;
+}
+.footer-top > .contact-info > header > p[title-pk] {
+    color: var( --cp05 ) !important;
 }
 
 header.title-pk-footer {
@@ -582,6 +589,16 @@ header.title-pk-footer > title-pk {
         white-space: nowrap;
     }
 
+    .contact-info nav li:has( ico ) {
+        display: grid;
+        gap: 0 5px;
+        grid-template-columns: repeat( 1, .1fr 1fr );
+    }
+    .contact-info nav li ico {
+        display: grid;
+        place-items: center;
+    }
+
     /* [ bottom section ] ❤️
     -------------------------- */
     #bottom-clouds {
@@ -628,4 +645,20 @@ header.title-pk-footer > title-pk {
     .footer-bottom img {
         /* pointer-events: none; */
     }
+}
+
+page-footer nav > li:has( ico ) {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 5px;
+}
+page-footer nav > li > ico {
+    display: grid;
+    place-items: center;
+}
+
+page-footer nav > li:has( ico ) a {
+    color: #fff;
+} page-footer nav > li:has( ico ) a:hover {
+    color: var( --cp05 );
 }

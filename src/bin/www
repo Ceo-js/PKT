@@ -4,15 +4,16 @@
  * Module dependencies.
  */
 
-var app = require( "../../app.js" );
+var app = require( "../../app" );
 var debug = require( "debug" )( "pikituchos:server" );
 var http = require( "http" );
+const { exec } = require( "node:child_process" );
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort( process.env.PORT || "8080" );
+var port = normalizePort( process.env.PORT || "3415" );
 app.set( "port", port );
 
 /**
@@ -87,8 +88,8 @@ function onListening() {
 		? "pipe " + addr
 		: "port " + addr.port;
 	debug( "Listening on " + bind );
-
-    console.clear();
+    
+	console.clear();
 	console.log( `\x1b[34m[============================]\n\x1b[0m
         Pikituchos
 \x1b[34m[============================]\x1b[0m

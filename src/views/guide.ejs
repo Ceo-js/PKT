@@ -5,12 +5,12 @@
 <head>
     <title><%= pageTitle %></title>
     
-    <link rel="icon" href="img/pikitucho.svg" type="svg+xml">
+    <link rel="icon" href="/img/pikitucho.svg" type="svg+xml">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheets/globals/global.css">
-    <script src="js/globals/global.js" defer></script>
+    <link rel="stylesheet" href="/stylesheets/globals/global.css">
+    <script src="/js/globals/global.js" defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cinzel+Decorative:wght@400;700;900&family=Open+Sans:wght@500;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tangerine:wght@400;700&display=swap');
 
@@ -368,8 +368,8 @@
         <appbar-overlay>
             <appbar-home>
                 <appbar-logo>
-                    <img logo-icon src="img/pikitucho.svg" alt="logo image">
-                    <img logo-text src="img/home/pikituchos-logo-txt.png" alt="">
+                    <img logo-icon src="/img/pikitucho.svg" alt="logo image">
+                    <img logo-text src="/img/home/pikituchos-logo-txt.png" alt="">
                 </appbar-logo>
                 <menu appbar>
                     <li url="#globals" data="g"><txt>Estilo global</txt></li>
@@ -402,8 +402,10 @@
             </header>
             <home>
                 <h2 link="/">index</h2>
+                <h2 link="/">Pikituchos</h2>
                 <h2 link="/admin">Admin Panel</h2>
-                <h2 link="/add-products">Add Product</h2>
+                <h2 link="/admin/add-product">Add Product</h2>
+                <h2 link="/produto">Product Page Model</h2>
             </home>
         </views-activated>
     </appbar>
@@ -542,7 +544,7 @@
                             desc="descrição do produto" 
                             real="45" 
                             cents="90"
-                            src="img/pikitucho.svg" 
+                            src="/img/pikitucho.svg" 
                             alt=""
                             btn="Ver detalhes"
                         ></card-pk>
@@ -603,7 +605,7 @@
 
             let c2cValues = {
                 css: "<link rel='stylesheet' href='../public/stylesheets/globals/global.css'>", 
-                js: '<script src="js/globals/global.js" defer><' + '/script>',
+                js: '<script src="/js/globals/global.js" defer><' + '/script>',
                 header: "<page-header></page-header>", 
                 footer: "<page-footer></page-footer>", 
                 title: `<title-pk 
@@ -611,7 +613,7 @@
     color="#daa250"
 ></title-pk>`, 
                 card: `<card-pk 
-    src="img/pikitucho.svg" 
+    src="/img/pikitucho.svg" 
     alt="Descrição da imagem" 
     name="Titulo do card" 
     desc="descrição do card" 
@@ -770,11 +772,11 @@
     <script>
         addEventListener( "load", ev => {
             var sounds = [
-                iteractionRadiateSound  = new Audio( 'audio/Holographic Interaction Radiate.wav' ),
-                iteractionSound = new Audio( 'audio/Holographic Interaction.wav' ),
-                activate = new Audio( "audio/Activate.wav" ),
-                lockOn = new Audio( "audio/Lock On.wav" ),
-                ambience = new Audio( "audio/AMBIENCE_HEARTBEAT.wav" ),
+                iteractionRadiateSound  = new Audio( './audio/Holographic Interaction Radiate.wav' ),
+                iteractionSound = new Audio( './audio/Holographic Interaction.wav' ),
+                activate = new Audio( "./audio/Activate.wav" ),
+                lockOn = new Audio( "./audio/Lock On.wav" ),
+                ambience = new Audio( "./audio/AMBIENCE_HEARTBEAT.wav" ),
             ];
 
             $$( "menu[appbar] > li > txt" ).forEach( txt => txt.addEventListener( "mouseover", ev => {

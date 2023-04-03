@@ -1,48 +1,21 @@
 
 /* [ imports ]
 =============================================== */
-// const express = require( "express" );
-const productsModel = require( "../models/ProductsData" );
+const express = require( "express" );
 
 /* [ properties ]
 =============================================== */
-exports.homeController = [
-	getHomePage = ( req, res, next ) => {
-        // const viewsData = {
-        //     admin: false,
-        //     // products,
-        //     // pageTitle: 'Pikituchos - Home Page'
-        // };
-        // res.render( "index", viewsData );
-        
-        fetchAllProducts( ( products ) => {
-            const viewsData = {
-                admin: false,
-                products,
-                pageTitle: 'Pikituchos - Home Page'
-            };
-            res.render( "index", viewsData );
-        });
+const homeController = {
+	index: function( req, res, next ) {
+		res.render( "index" );
 	},
-    getProductDetailsPage = ( req, res ) => {
-        const productId = req.params.productId;
-        getProductById( productId, ( product ) => {
-            const viewsData = {
-                product,
-                pageTitle: product.title 
-            };
-            res.render( "productDetails", viewsData );
-        } );
-    },
-	guide = ( l, y, h ) => {
-        const viewsData = {
-            pageTitle: "Guia Pikituchos - Homepage",
-        };
-		y.render( "guide", viewsData );
+	guide: function( l, y, h ) {
+		y.render( "guide" );
 	},
-];
-
-
+	produto: function( l, y, h ) {
+		y.render( "produto" );
+	},
+};
 
 
 
@@ -50,4 +23,4 @@ exports.homeController = [
 
 /* [ exports ]
 =============================================== */
-// module.exports = homeController;
+module.exports = homeController;

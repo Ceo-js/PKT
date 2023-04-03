@@ -1,12 +1,11 @@
 {
   "name": "pikituchos",
-  "version": "1.0.2",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
-    "app": "nodemon ./src/bin/www",
-    "lyh": "nodemon ./src/bin/lyh"
+    "app": "nodemon ./src/bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,17 +13,11 @@
     "ejs": "^3.1.8",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "express-session": "^1.17.3",
-    "express-validator": "^6.15.0",
-    "mysql2": "^3.2.0",
-    "dotenv": "^16.0.3",
-    "uuid": "^9.0.0"
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20",
-    "sequelize": "^6.29.0",
-    "sequelize-cli": "^6.6.0"
+    "nodemon": "^2.0.20"
   },
   "description": "<!-- > [![img](https://rawcdn.githack.com/dh-fs-tn-18-g7/.github/3dec8e2c134c1dd9ae8fdb6d89cbccd93fde2469/profile/dh-fstn-18-g7.svg)](https://github.com/dh-fs-tn-18-g7) -->\r <p align=\"center\">\r     <a href=\"https://github.com/dh-fs-tn-18-g7\">\r         <img src=\"https://rawcdn.githack.com/dh-fs-tn-18-g7/.github/3dec8e2c134c1dd9ae8fdb6d89cbccd93fde2469/profile/dh-fstn-18-g7.svg\">\r     </a>\r </p>",
   "main": "app.js",
@@ -38,5 +31,4 @@
     "url": "https://github.com/dh-fs-tn-18-g7/pikituchos/issues"
   },
   "homepage": "https://github.com/dh-fs-tn-18-g7/pikituchos#readme"
-
 }

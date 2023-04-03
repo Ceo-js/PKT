@@ -1,34 +1,23 @@
-var express = require( "express" );
-var router = express.Router();
-// const { getAdminPage, getAddProductPage } = require("../controllers/Admin"),
-const adminController = require( "../controllers/Admin" ),
-    productsData = require( "../models/ProductsData" );
-    // cartController = require('../controllers/Cart');
 
 
-/* ==[ Admin ]==========================
- */
-router.get( "/admin", getAdminPage );
+const express = require( "express" ),
+	router = express.Router(),
+	ProductsController = require( "../controllers/ProductsController" );
 
 
-/* ==[ add-product ]===========================
-*/
-router.get( "/add-products", getAddProductPage );
-router.post( "/add-products", postAddProductPage );
-
-
-/* ==[ edit-product ]==============================
- */
+router.get( "/", getAdminProductsPage );
+router.get( "/add-product", getAddProductPage );
+router.post( "/add-product", postAddProductPage );
 router.get( "/edit-product/:productId", getEditProductPage );
 router.post( "/edit-product", postEditProductPage );
-router.post( "/delete-product", postDeleteProductPage );
+router.post( "/delete", postDeleteProductPage );
 
+router.get( "/products1", getAdminProducts1Page );
+// router.get( "/add-product1", getAddProduct1Page );
+// router.post( "/add-product", postAddProductPage );
+// router.get( "/edit-product/:productId", getEditProductPage );
+// router.post( "/edit-product", postEditProductPage );
+// router.post( "/delete", postDeleteProductPage );
 
-
-
-
-
-
-/* ==[ Exports ]============================
- */
 module.exports = router;
+

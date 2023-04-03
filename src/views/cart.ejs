@@ -1,135 +1,87 @@
 
 
-<%- include( "includes/home/head.ejs" ) %>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title><%= pageTitle %></title>
+    <!-- --------------------------------------------------------- -->
+    <link rel="icon" href="img/logo.svg" type="svg+xml">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <base href="/" target="_blank"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- [ styles ] 
+    ==================================================== -->
+    <link rel="stylesheet" href="stylesheets/globals/global.css">
+    <link rel="stylesheet" href="stylesheets/globals/swiper-bundle.min.css">
+    <link rel="stylesheet" href="stylesheets/home/home.css">
+    <link rel="stylesheet" href="stylesheets/cart/cart.css">
+    <!-- [ scripts ] 
+    ==================================================== -->
+    <script src="js/globals/swiper-bundle.min.js"></script>
+    <script src="js/globals/global.js" defer></script>
+    <script src="js/cart/cart.js" defer></script>
+</head>
 <body>
         
-    <%- include( "includes/appbar.ejs" ) %>
-    <!-- <page-header></page-header> -->
+    <%- include( "includes/appbar" ) %>
 
     <main>
-        <!-- [ highlights section ]
-        ========================================================= -->
-        <article class="highlights">
+        
+        <article class="highlights" cart="">
             <header>
-                <title-pk title-pk="<%= pageTitle %>" color="var(--cp05)"></title-pk>
+                <p title-pk="<%= pageTitle %>"><%= pageTitle %></p>
             </header>
-            
-            <div>
-                <p>Product Name</p>
-                <p>Quantity</p>
-                <p>Price per Product</p>
-                <p>Total Price</p>
-                <p>Actions</p>
-            </div>
-            <% for( let product of cartProducts ) { %>
-                <card>
-                    <h2><%= product.title %></h2>
-                    <p><%= product.quantity %></p>
-                    <p><%= product.price %></p>
-                    <p><%= product.cartPrice %></p>
-                    <p>
-                        <form action="/cart/delete-item" method="post">
-                            <input type="hidden" name="productId" value="<%= product.id %>">
-                            <!-- <button>Delete</button> -->
-                            <!-- <center-btn> -->
-                                <button-pk name="Delete" color="" width="50%"></button-pk>
-                            <!-- </center-btn> -->
-                        </form>
-                    </p>
-                </card>
-            <% } %>
-        </article>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Valor unitário</th>
+                            <th>Valor Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let product of cartProducts ) { %>
+                            <tr>
+                                <td product>
+                                    <picture>
+                                        <img src="<%= product.cover %>" alt="">
+                                    </picture>
+                                    <header>
+                                        <p bold><%= product.title %></p>
+                                        <footer>
+                                            <p genre><%= product.genre %></p>
+                                            <p category><%= product.category %></p>
+                                        </footer>
+                                    </header>
+                                </td>
+                                <td><%= product.quantity %></td>
+                                <td><%= product.price %>,<%= product.cents %></td>
+                                <td><%= product.cartPrice %></td>
+                                <td>
+                                    <form action="/cart/delete-item" method="post">
+                                        <input type="hidden" name="productId" value="<%= product.id %>">
+                                        <button>remover</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </section>
+    </article>
+
     </main>
-        
-    <%- include( "includes/footer.ejs" ) %>
-    <!-- <page-footer></page-footer> -->
-    
-    
-    <script>
-        /* [ swiperjs ]
-            ============================================================== */
-        /*  https://swiperjs.com/get-started
-            https://www.jsdelivr.com/package/npm/swiper
-            https://swiperjs.com/demos
-        */
-        var swiper = new Swiper( "*[slider-heighlights]", {
-            slidesPerView: 4,
-            spaceBetween: 25,
-            loop: true,
-            centerSlide: "true",
-            fade: "true",
-            grabCursor: "true",
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        
-            breakpoints:{
-                0: { slidesPerView: 1, },
-                520: { slidesPerView: 2, },
-                830: { slidesPerView: 3, },
-                950: { slidesPerView: 3, },
-                1120: { slidesPerView: 4, },
-            },
-        } );
 
-        var swiper = new Swiper( "*[slider-0-1anos]", {
-            slidesPerView: 4,
-            spaceBetween: 25,
-            loop: true,
-            centerSlide: "true",
-            fade: "true",
-            grabCursor: "true",
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
+    <%- include( "includes/whatsapp-bubble" ) %>
         
-            breakpoints:{
-                0: { slidesPerView: 1, },
-                520: { slidesPerView: 2, },
-                830: { slidesPerView: 3, },
-                950: { slidesPerView: 3, },
-                1120: { slidesPerView: 4, },
-            },
-        } );
-
-        var swiper = new Swiper( "*[slider-2-3anos]", {
-            slidesPerView: 4,
-            spaceBetween: 25,
-            loop: true,
-            centerSlide: "true",
-            fade: "true",
-            grabCursor: "true",
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        
-            breakpoints:{
-                0: { slidesPerView: 1, },
-                520: { slidesPerView: 2, },
-                830: { slidesPerView: 3, },
-                950: { slidesPerView: 3, },
-                1120: { slidesPerView: 4, },
-            },
-        } );
-    </script>
+    <%- include( "includes/footer" ) %>
+    
 </body>
 </html>
 

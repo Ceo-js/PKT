@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title><%= pageTitle %></title>
+    <link rel="icon" href="img/logo.svg" type="svg+xml">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <base href="/" target="_blank"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="stylesheets/globals/global.css">
+    <link rel="stylesheet" href="stylesheets/produto/produto.css">
+    <script src="js/globals/global.js" defer></script>
+    <script src="js/produto/produto.js" defer></script>
+</head>
+<body class="main-bg">
+        
+    <%- include( "includes/appbar.ejs" ) %>
+    <!-- <page-header></page-header> -->
+
+    <main>
+
+        <nav page-nav>
+            <menu page-nav-menu>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">roupas</a></li>
+                <li><a href="#">meninos</a></li>
+                <li><a href="#"><%= product.category %></a></li>
+                <li><a href="/admin/product-details/<%= product.id %>"><%= product.title %></a></li>
+            </menu>
+        </nav>
+        <article>
+            <section id="product-section">
+                <main-frame>
+                    <sidebar>
+                        <menu>
+                            <label sidebar-item active>
+                                <input type="radio" name="sidebar" >
+                                <img src="<%= product.image %>" alt="">
+                            </label>
+                            <label sidebar-item>
+                                <input type="radio" name="sidebar">
+                                <img src="<%= product.image01 %>" alt="">
+                            </label>
+                            <label sidebar-item>
+                                <input type="radio" name="sidebar">
+                                <img src="<%= product.image02 %>" alt="">
+                            </label>
+                            <label sidebar-item>
+                                <input type="radio" name="sidebar">
+                                <img src="<%= product.image03 %>" alt="">
+                            </label>
+                            <label sidebar-item>
+                                <input type="radio" name="sidebar">
+                                <img src="<%= product.cover %>" alt="">
+                            </label>
+                        </menu>
+                    </sidebar>
+                    <picture sidebar-item-target>
+                        <img src="<%= product.image %>" alt="">
+                    </picture>
+                </main-frame>
+
+                <frame-details>
+                    <details-header>
+                        <title-pk title-pk="<%= product.title %>" color="var( --cp05 )"></title-pk>
+                        <footer>
+                            <p>REF: <%= product.ref %></p>
+                        </footer>
+                    </details-header>
+                    <details-price>
+                        <header>
+                            <p>
+                                <strike>R$ <%= product.oldPrice %></strike>
+                            </p>
+                            <h2>R$ <%= product.price %>,<%= product.cents %></h2>
+                        </header>
+                        <footer>
+                            <p>*Consulte as condições de parcelamento no carrinho.</p>
+                        </footer>
+                    </details-price>
+                    <hr>
+                    <details-sizes>
+                        <p>Tamanhos:</p>
+                        <footer>
+                            <label active>
+                                <input type="radio" name="s" >
+                                <h3>P</h3>
+                            </label>
+                            <label>
+                                <input type="radio" name="sizes">
+                                <h3>M</h3>
+                            </label>
+                            <label>
+                                <input type="radio" name="sizes">
+                                <h3>G</h3>
+                            </label>
+                            <label>
+                                <input type="radio" name="sizes">
+                                <h3>GG</h3>
+                            </label>
+                        </footer>
+                    </details-sizes>
+                    <details-colors>
+                        <p>Cores:</p>
+                        <footer>
+                            <label>
+                                <input type="radio" name="color" checked>
+                                <img src="img/produto/fabrics/cotton-verde-agua.webp" alt="">
+                            </label>
+                            <label>
+                                <input type="radio" name="color">
+                                <img src="img/produto/fabrics/cotton-red.jpg" alt="">
+                            </label>
+                            <label>
+                                <input type="radio" name="color">
+                                <img src="img/produto/fabrics/cotton-blue.jpg" alt="">
+                            </label>
+                        </footer>
+                    </details-colors>
+                    <details-quantity>
+                        <p>Quantidade</p>
+                        <footer>
+                            <box>
+                                <input type="button" value="-" quantity-decrement>
+                                <label quantity-label>
+                                    <input type="text" value="1" quantity readonly>
+                                </label>
+                                <input type="button" value="+" quantity-increment>
+                            </box>
+                        </footer>
+                    </details-quantity>
+                    <details-footer>
+                        <!-- <button-pk name="Adicionar à Sacola" width="150px"></button-pk> -->
+
+                        <%- include( "includes/cartButton" ) %>
+                        <desc>
+                            <header>
+                                <h4 desc-toggle>Descrição do produto</h4>
+                                <h4>|</h4>
+                                <h4 devoluções-toggle>Devoluções</h4>
+                            </header>
+                            <footer desc>
+                                <p>
+                                    <%= product.description %>
+                                </p>
+                            </footer>
+                            <footer devoluções>
+                                <p>
+                                    Nosso prazo é <strong>30 dias</strong> para troca ou <strong>7 dias</strong> para devolução. Para mais informações consulte nossa política de trocas.
+                                </p>
+                            </footer>
+                        </desc>
+                    </details-footer>
+                </frame-details>
+            </section>
+            <section id="more-from-this-collection"></section>
+        </article>
+
+        <article shop-infos>
+            <section intro="l">
+                <header>
+                    <img src="/img/globals/shop-infos/baby-clothes-svgrepo-com.svg" alt="">
+                </header>
+                <after></after>
+                <footer>
+                    <p title-pk="Roupas de Qualidade">Roupas de Qualidade</p>
+                    <p>Todos os modelos de roupa infantil da loja online Pikituchos são pensados para oferecer conforto e praticidade na hora de vestir sua criança. Além disso, os tecidos utilizados são de alta qualidade, garantindo a durabilidade da peça.</p>
+                </footer>
+            </section>
+            <section intro="r">
+                <header>
+                    <img src="/img/globals/shop-infos/online-shop-website-svgrepo-com.svg" alt="">
+                </header>
+                <after></after>
+                <footer>
+                    <p title-pk="Da Capital da Moda Infantil para o Brasil">Da Capital da Moda Infantil para o Brasil</p>
+                    <p>Estamos localizado no maior polo de roupa infantil do Brasil. Temos diversos fornecedores de qualidade e todos os produtos são confeccionados aqui dentro do Estado.</p>
+                </footer>
+            </section>
+            <section intro="l">
+                <header>
+                    <img src="/img/globals/shop-infos/credit-card-payment-svgrepo-com.svg" alt="">
+                </header>
+                <after></after>
+                <footer>
+                    <p title-pk="Parcele em Até 6x Sem Juros">Parcele em Até 6x Sem Juros</p>
+                    <p>Faça suas compras no cartão de crédito em até 6x sem juros e aproveite todas as ofertas do site para garantir roupa infantil para sua criança.</p>
+                </footer>
+            </section>
+            <section intro="r">
+                <header>
+                    <img src="/img/globals/shop-infos/delivery-truck-delivery-svgrepo-com.svg" alt="">
+                </header>
+                <after></after>
+                <footer>
+                    <p title-pk="Envio para Todo Brasil">Envio para Todo Brasil</p>
+                    <p>Na loja Pikituchos você faz suas compras com a tranquilidade de envio para todo Brasil, através dos Correios ou transportadoras. Escolhemos aquele que atende com menor preço e menor prazo de entrega para sua região.</p>
+                </footer>
+            </section>
+            <section intro="l">
+                <header>
+                    <img src="/img/globals/shop-infos/shopping-bag-svgrepo-com.svg" alt="">
+                </header>
+                <after></after>
+                <footer>
+                    <p title-pk="1ª Troca Gratuita">1ª Troca Gratuita</p>
+                    <p>Comprou e não serviu? A primeira troca é gratuita. Assim você pode devolver o produto para nossa loja sem precisar pagar o frete. Caso precise trocar novamente o frete da devolução e do novo envio ficam por sua conta. Para mais informações entre em contato com nossa equipe de atendimento.</p>
+                </footer>
+            </section>
+            <section intro="r">
+                <header>
+                    <img src="/img/globals/shop-infos/discount-svgrepo-com.svg" alt="">
+                </header>
+                <after></after>
+                <footer>
+                    <p title-pk="Frete Grátis">Frete Grátis</p>
+                    <p>Temos disponíveis condições de frete grátis para todas as regiões do Brasil.  Sul e Sudeste tem frete grátis em compras acima de R$ 149,00 e as demais regiões tem frete grátis em compras acima de R$ 299,00. Aproveite as vantagens para garantir vários modelos de roupa infantil.</p>
+                </footer>
+            </section>
+        </article>
+
+        <article tabelas>
+            <section class="tabela-medidas" intro="l">
+                <header intro="l">
+                    <p title-pk="Tabela de Medidas de Roupas" style="color: var( --cp07 ) !important; font-size: 1.17em">Tabela de Medidas de Roupas</p>
+                </header>
+                <hr color>
+                <table intro="b">
+                    <thead>
+                        <tr>
+                            <th>Tamanho</th>
+                            <th>Idade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>RN</th>
+                            <td>Recém Nascido</td>
+                        </tr>
+                        <tr>
+                            <th>P</th>
+                            <td>0 a 3 meses</td>
+                        </tr>
+                        <tr>
+                            <th>M</th>
+                            <td>3 a 6 meses</td>
+                        </tr>
+                        <tr>
+                            <th>G</th>
+                            <td>6 a 9 meses</td>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td>9 a 18 meses</td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td>1 a 2 anos</td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td>2 a 3 anos</td>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <td>3 a 4 anos</td>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <td>4 a 6 anos</td>
+                        </tr>
+                        <tr>
+                            <th>8</th>
+                            <td>6 a 8 anos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="tabela-medidas" intro="r">
+                <header intro="r">
+                    <p title-pk="Tabela de Medidas para Sapatinhos" style="color: var( --cp05 ) !important; font-size: 1.17em">Tabela de Medidas para Sapatinhos</p>
+                </header>
+                <hr color>
+                <table intro="b">
+                    <thead>
+                        <tr>
+                            <th>Tamanho</th>
+                            <th>Idade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>13</th>
+                            <td>0 a 2 meses</td>
+                        </tr>
+                        <tr>
+                            <th>14</th>
+                            <td>2 a 4 meses</td>
+                        </tr>
+                        <tr>
+                            <th>15</th>
+                            <td>4 a 6 meses</td>
+                        </tr>
+                        <tr>
+                            <th>16</th>
+                            <td>6 a 8 meses</td>
+                        </tr>
+                        <tr>
+                            <th>17</th>
+                            <td>8 a 10 meses</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </article>
+
+        
+    </main>
+
+    <%- include( "includes/whatsapp-bubble" ) %>
+        
+    <%- include( "includes/footer.ejs" ) %>
+    <!-- <page-footer></page-footer> -->
+    
+    <!-- <script src="js/produto/produto.js" ></script> -->
+</body>
+</html>
+

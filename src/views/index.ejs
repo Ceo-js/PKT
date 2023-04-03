@@ -1,6 +1,28 @@
 
 
-<%- include( "includes/home/head.ejs" ) %>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title><%= pageTitle %></title>
+    <!-- --------------------------------------------------------- -->
+    <link rel="icon" href="img/logo.svg" type="svg+xml">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <base href="/" target="_blank"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- [ styles ] 
+    ==================================================== -->
+    <link rel="stylesheet" href="stylesheets/globals/global.css">
+    <link rel="stylesheet" href="stylesheets/globals/swiper-bundle.min.css">
+    <link rel="stylesheet" href="stylesheets/home/home.css">
+    <!-- [ scripts ] 
+    ==================================================== -->
+    <script src="js/globals/swiper-bundle.min.js"></script>
+    <script src="js/globals/global.js" defer></script>
+    <script src="js/home/home.js" defer></script>
+</head>
 <body>
         
     <%- include( "includes/appbar.ejs" ) %>
@@ -64,144 +86,47 @@
         <!-- [ highlights section ]
         ========================================================= -->
         <article class="highlights">
-            <header>
+            <header intro="l">
                 <title-pk title-pk="Produtos mais procurados" color="var(--cp05)"></title-pk>
             </header>
+            <% if( products.length ) { %>
             <slider-spot>
                 <slider class="swiper" slider-heighlights>
                     <slider-modules class="swiper-wrapper">
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius ceo!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-01.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
+                        <% for( let product of products ) { %>
 
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-02.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
+                            <slide class="swiper-slide" intro="b">
+                                <card-pk
+                                    name="<%= product.title %>" 
+                                    desc="<%= product.description %>"
+                                    real="<%= product.price %>" 
+                                    cents="<%= product.cents %>"
+                                    src="<%= product.cover %>" 
+                                    alt=""
+                                    btn="Ver detalhes"
+                                    url="/admin/product-details/<%= product.id %>"
+                                ></card-pk>
+                            </slide>
+                            <% } %>
 
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-03.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
 
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-04.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
-
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-04.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
-
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-04.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
-
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-04.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
-
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-04.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
-                        
-                        <slide class="swiper-slide">
-                            <card-pk
-                                name="Product's name" 
-                                desc="Lorem ipsum sit amet consectetur elit. Accusamus recusandae, vel. Quae sit non eius!"
-                                real="99" 
-                                cents="99"
-                                src="img/home/ofertas/oferta-01.png" 
-                                alt=""
-                                btn="Ver detalhes"
-                                url="/produto"
-                            ></card-pk>
-                        </slide>
                     </slider-modules>
                     <div class="swiper-pagination"></div>
                 </slider>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next" intro="l"></div>
+                <div class="swiper-button-prev" intro="r"></div>
             </slider-spot>
-            <center-btn>
+            <center-btn intro="t">
                 <button-pk name="Ver mais" color="" width="50%"></button-pk>
             </center-btn>
+            <% } %>
         </article>
 
         
         <!-- [ yourBaby section ]
         ========================================================= -->
         <article class="yourbaby">
-            <spot>
+            <spot intro="l">
                 <wave></wave>
                 <wave></wave>
                 <wave></wave>
@@ -210,10 +135,10 @@
                 </wave-pix>
             </spot>
             <footer>
-                <header>
+                <header intro="r">
                     <title-pk title-pk="Seu pequeno é nossa prioridade" color="var(--cp06)"></title-pk>
                 </header>
-                <p>Nossa meta é trazer inovação e tudo que há de melhor para seu bebê, para garantir à
+                <p intro="b">Nossa meta é trazer inovação e tudo que há de melhor para seu bebê, para garantir à
                     mamãe e seu pequeno todo o conforto e alegria que a vida pode oferecer.
                     <br> <br>
                     É incrível como algo tão pequenino pode te fazer sentir algo tão grande.
@@ -224,9 +149,10 @@
         <!-- [ sample-products section ]
         ========================================================= -->
         <section class="sample-products">
-            <article class="">
+            <article>
                 <header>
-                    <title-pk name="Moda e acessórios para bebês <br> de 0 à 1 ano" color="var(--cp05)"></title-pk>
+                    <title-pk title-pk="Moda e acessórios para bebês" color="var(--cp05)" intro="r"></title-pk>
+                    <title-pk title-pk="de 0 à 1 ano" color="var(--cp05)" intro="l"></title-pk>
                 </header>
                 <slider-spot>
                     <slider class="swiper" slider-0-1anos>
@@ -342,15 +268,15 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </slider-spot>
-                <center-btn>
+                <center-btn intro="t">
                     <button-pk name="Ver mais" color="" width="50%"></button-pk>
                 </center-btn>
             </article>
 
             <article>
                 <header>
-                    <title-pk title-pk="Moda e acessórios para pequenos" color="var(--cp05)"></title-pk>
-                    <title-pk title-pk="de 2 à 3 anos" color="var(--cp05)"></title-pk>
+                    <title-pk title-pk="Moda e acessórios para crianças" color="var(--cp05)" intro="l"></title-pk>
+                    <title-pk title-pk="de 2 à 3 anos" color="var(--cp05)" intro="r"></title-pk>
                 </header>
                 <slider-spot>
                     <slider class="swiper" slider-2-3anos>
@@ -465,7 +391,7 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                 </slider-spot>
-                <center-btn>
+                <center-btn intro="t">
                     <button-pk name="Ver mais" color="" width="50%"></button-pk>
                 </center-btn>
             </article>
@@ -475,8 +401,8 @@
         ========================================================= -->
         <article class="testimonials">
             <header>
-                <title-pk title-pk="O que outras mamâes estão dizendo" color="var(--cp07)"></title-pk>
-                <title-pk title-pk="sobre nossos serviços" color="var(--cp07)"></title-pk>
+                <title-pk title-pk="O que outras mamâes estão dizendo" color="var(--cp07)" intro="r"></title-pk>
+                <title-pk title-pk="sobre nossos serviços" color="var(--cp07)" intro="l"></title-pk>
             </header>
             <section>
                 <card>
@@ -524,6 +450,8 @@
         </article>
 
     </main>
+
+    <%- include( "includes/whatsapp-bubble" ) %>
         
     <%- include( "includes/footer.ejs" ) %>
     <!-- <page-footer></page-footer> -->

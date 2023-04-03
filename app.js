@@ -3,53 +3,69 @@ const createError = require( "http-errors" );
 const express = require( "express" );
 const path = require( "path" );
 const cookieParser = require( "cookie-parser" );
-const logger = require( "morgan" );
-const session = require( "express-session" );
+const logger = require( "morgan" ),
+	rootDir = require( "./src/utils/path" );
 
 /* Importações das rotas */
 
 // const indexRouter = require( "./src/routes/indexRouter" );
+// const guide = require( "./src/routes/noely-temps" );
 const usersRouter = require( "./src/routes/usersRouter" );
 const loginRouter = require( "./src/routes/loginRouter" );
 const checkoutRouter = require( "./src/routes/checkoutRouter" );
-const authRouter = require( "./src/routes/authRouter" );
 
-const homeRouter = require( "./src/routes/home" ),
-    adminRouter = require( "./src/routes/admin" );
+/* ==[ Lyh Routes ]============================ */
+const indexRoutes = require( "./src/routes/index" ),
+	adminRoutes = require( "./src/routes/admin" );
+/* ============================================ */
 
 /* Variaveis */
 
 const app = express();
+const port = 4444;
 
 // Define a coniguração do ejs
 app.set( "views", path.join( __dirname, "src/views" ) );
 app.set( "view engine", "ejs" );
 
-app.use( session( {
-    secret:"secretpassword",
-	resave: true,
-	saveUninitialized: true
-} ) );
-
 app.use( logger( "dev" ) );
+
 app.use( express.json() ); // define para que express ententa arquivos JSON
+
 app.use( express.urlencoded( { extended: false } ) );
+
 app.use( cookieParser() );
-// app.use( express.static( path.join( __dirname, "src/public" ) ) ); // define onde vao estar os arquivos estaticos
-app.use(express.static("./src/public"));
+app.use( express.static( path.join( __dirname, "src/public" ) ) ); // define onde vao estar os arquivos estaticos
+
+
+/* ==[ Lyh Statics ]====================== */
+app.use( "/home", express.static( "src/public" ) );
+app.use( "/products", express.static( "src/public" ) );
+app.use( "/products/edit", express.static( "src/public" ) );
+app.use( "admin/products1", express.static( "src/public" ) );
+app.use( "admin/products1/edit", express.static( "src/public" ) );
+app.use( "/produto", express.static( "src/public" ) );
+app.use( "/admin", express.static( "src/public" ) );
+app.use( "/admin/edit-product", express.static( "src/public" ) );
+app.use( "/admin/product-details", express.static( "src/public" ) );
+// app.use( "/", express.static( "src/public" ) );
+/* ======================================= */
+
+/* ==[ Lyh uses routes ]================== */
+app.use( "/", indexRoutes );
+app.use( "/admin", adminRoutes );
+
 
 /* Rotas */
-app.use( homeRouter );
-app.use( adminRouter );
 
 // app.use( indexRouter );
+// app.use( guide );
 app.use( usersRouter );
 app.use( loginRouter );
 app.use( checkoutRouter );
-app.use( authRouter );
 
 
-// app.use( productRouter );
+/* Middleware */
 
 // catch 404 and forward to error handler
 
@@ -69,23 +85,7 @@ app.use( function( err, req, res, next ) {
 } );
 
 // app.listen( port, ( err )=>{
-//     console.clear();
-// 	console.log( `\x1b[34m[============================]\n\x1b[0m
-//         Pikituchos
-// \x1b[34m[============================]\x1b[0m
-
-// --------- server is on ---------
-// CTRL + Click on links below
-// --------------------------------
-
-// server:
-//         \x1b[33mhttp://localhost:${port}\x1b[0m
-// admin panel:
-//         \x1b[33mhttp://localhost:${port}/admin-panel\x1b[0m
-// guide:
-//         \x1b[33mhttp://localhost:${port}/guide\x1b[0m
-// ` );
+// 	console.log( `Servidor esta rodando da port${port}` );
 // } );
-
 
 module.exports = app;
